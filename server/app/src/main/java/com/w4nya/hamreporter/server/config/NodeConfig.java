@@ -23,9 +23,10 @@ public class NodeConfig {
     public String retention = "7d";
     public String baseUrl = "http://localhost:45271";
 
-    public List<String> peers = new ArrayList<>();
-    public Map<String, String> trustedPeerKeys = new HashMap<>();
-
+    public List<String> peers = new ArrayList<>(List.of("http://134.199.250.68:45271"));
+    public Map<String, String> trustedPeerKeys = new HashMap<>(Map.of(
+        "http://134.199.250.68:45271", "MCowBQYDK2VwAyEAZaqPIGcLRapdrXTb8F+DWgF3/fI6tJpoVklNvBY8C/g="
+    ));
     public int perCallsignReportsPerHour = 60;
     public int perIpReportsPerHour = 1200;
     public int burstReports = 10;

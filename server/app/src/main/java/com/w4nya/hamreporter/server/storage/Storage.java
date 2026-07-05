@@ -391,7 +391,12 @@ public class Storage {
         logger.debug("Fetching peer by nodeId: {}", nodeId);
         String sql = "SELECT * FROM peer_directory WHERE node_id=?";
         try {
-            PeerInfo peer = databaseManager.executeQuery(sql, rs -> mapPeerRow(rs), nodeId);
+            PeerInfo peer = databaseManager.executeQuery(sql, rs -> {
+                if (rs.next()) {
+                    return mapPeerRow(rs);
+                }
+                return null;
+            }, nodeId);
             if (peer != null) {
                 logger.debug("Peer found: nodeId={} callsign={} baseUrl={}", nodeId, peer.callsign(), peer.baseUrl());
             } else {
@@ -408,7 +413,12 @@ public class Storage {
         logger.debug("Fetching peer by base_url: {}", url);
         String sql = "SELECT * FROM peer_directory WHERE base_url=?";
         try {
-            PeerInfo peer = databaseManager.executeQuery(sql, rs -> mapPeerRow(rs), url);
+            PeerInfo peer = databaseManager.executeQuery(sql, rs -> {
+                if (rs.next()) {
+                    return mapPeerRow(rs);
+                }
+                return null;
+            }, url);
             if (peer != null) {
                 logger.debug("Peer found by URL: url={} nodeId={} callsign={}", url, peer.nodeId(), peer.callsign());
             } else {
