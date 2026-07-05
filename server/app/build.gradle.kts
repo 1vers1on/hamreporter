@@ -1,6 +1,7 @@
 plugins {
     java
     application
+    id("com.gradleup.shadow") version "8.3.6"
 }
 
 repositories {
@@ -36,12 +37,15 @@ application {
     mainClass = "com.w4nya.hamreporter.server.Main"
 }
 
-tasks.jar {
+tasks.shadowJar {
     archiveBaseName.set("hamreporter-server")
     archiveVersion.set("1.0.0")
-    manifest {
-        attributes["Main-Class"] = "com.w4nya.hamreporter.server.Main"
-    }
+    archiveClassifier.set("")
+    mergeServiceFiles()
+}
+
+tasks.build {
+    dependsOn(tasks.shadowJar)
 }
 
 tasks.named<Test>("test") {
