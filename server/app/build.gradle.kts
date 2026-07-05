@@ -36,6 +36,14 @@ application {
     mainClass = "com.w4nya.hamreporter.server.Main"
 }
 
+tasks.jar {
+    archiveBaseName.set("hamreporter-server")
+    archiveVersion.set("1.0.0")
+    manifest {
+        attributes["Main-Class"] = "com.w4nya.hamreporter.server.Main"
+    }
+}
+
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
