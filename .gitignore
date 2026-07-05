@@ -9,7 +9,6 @@ server/out/
 **/out/
 **/bin/
 *.class
-*.jar
 *.war
 *.ear
 *.log
