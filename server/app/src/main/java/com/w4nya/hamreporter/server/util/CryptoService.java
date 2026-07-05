@@ -119,4 +119,14 @@ public final class CryptoService {
                 Files.readString(Paths.get(pubPath)).trim());
         return new KeyPair(pk, sk);
     }
+
+    public static String randomHex(int length) {
+        byte[] bytes = new byte[length / 2];
+        new java.security.SecureRandom().nextBytes(bytes);
+        StringBuilder sb = new StringBuilder(length);
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 }

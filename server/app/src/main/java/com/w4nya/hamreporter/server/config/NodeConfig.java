@@ -10,9 +10,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.w4nya.hamreporter.server.NodeRole;
+import com.w4nya.hamreporter.server.util.CryptoService;
 
 public class NodeConfig {
-    public String nodeId = "default-node";
+    public String nodeId = CryptoService.randomHex(16);
     public String callsign = "NOCALL";
     public String bindHost = "0.0.0.0";
     public int port = 45271;
@@ -84,6 +85,9 @@ public class NodeConfig {
     public void validate() {
         if (nodeId == null || nodeId.isBlank()) {
             throw new IllegalArgumentException("nodeId must not be blank");
+        }
+        if (!nodeId.matches("[0-9a-fA-F]{16}")) {
+            throw new IllegalArgumentException("nodeId must be a 16-character hex string");
         }
         if (port < 1 || port > 65535) {
             throw new IllegalArgumentException("port must be between 1 and 65535, got: " + port);
