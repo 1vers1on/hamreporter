@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.KeyPair;
 import java.security.PublicKey;
-import java.util.Base64;
 
 import org.junit.jupiter.api.Test;
 

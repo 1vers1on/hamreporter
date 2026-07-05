@@ -2,7 +2,6 @@ package com.w4nya.hamreporter.server.storage;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;

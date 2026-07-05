@@ -6,7 +6,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.w4nya.hamreporter.server.NodeRole;
 import com.w4nya.hamreporter.server.PeerInfo;
 import com.w4nya.hamreporter.server.SignalReport;
 import com.w4nya.hamreporter.server.SignedRequestContext;
